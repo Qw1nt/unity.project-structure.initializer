@@ -1,0 +1,10 @@
+{
+  "name": "com.qw1nt.template-builder",
+  "version": "0.0.1",
+  "displayName": "Project Template Builder",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "author": {
+    "name": "Qw1nt"
+  }
+}
