@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using ProjectStructure.Initializer.Editor.Core.Common;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace ProjectStructure.Initializer.Editor
 {

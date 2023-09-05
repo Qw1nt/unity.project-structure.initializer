@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using ProjectStructure.Initializer.Runtime.Interfaces;
+using ProjectStructure.Initializer.Editor.Core.Interfaces;
 
-namespace ProjectStructure.Initializer.Runtime.Core
+namespace ProjectStructure.Initializer.Editor.Core.Common
 {
     public class ProjectBuilder
     {

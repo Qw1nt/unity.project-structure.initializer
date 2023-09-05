@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace ProjectStructure.Initializer.Runtime.Core
+namespace ProjectStructure.Initializer.Editor.Core.Common
 {
     [Serializable]
     public class ProjectFolder
