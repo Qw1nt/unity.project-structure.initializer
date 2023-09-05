@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ProjectStructure.Initializer.Runtime.Core;
-using ProjectStructure.Initializer.Runtime.Interfaces;
+﻿using ProjectStructure.Initializer.Editor.Core.Common;
+using ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEngine;
 
-namespace ProjectStructure.Initializer.Runtime.Configs
+namespace ProjectStructure.Initializer.Editor.Configs
 {
     public class DefaultJsonConfig : IProjectStructureConfig
     {

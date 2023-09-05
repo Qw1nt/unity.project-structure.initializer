@@ -1,6 +1,6 @@
-﻿using ProjectStructure.Initializer.Runtime.Core;
+﻿using ProjectStructure.Initializer.Editor.Core.Common;
 
-namespace ProjectStructure.Initializer.Runtime.Interfaces
+namespace ProjectStructure.Initializer.Editor.Core.Interfaces
 {
     public interface IProjectStructureConfig
     {

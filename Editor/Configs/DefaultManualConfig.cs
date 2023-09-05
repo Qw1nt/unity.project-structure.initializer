@@ -1,7 +1,7 @@
-﻿using ProjectStructure.Initializer.Runtime.Core;
-using ProjectStructure.Initializer.Runtime.Interfaces;
+﻿using ProjectStructure.Initializer.Editor.Core.Common;
+using ProjectStructure.Initializer.Editor.Core.Interfaces;
 
-namespace ProjectStructure.Initializer.Runtime.Configs
+namespace ProjectStructure.Initializer.Editor.Configs
 {
     public class DefaultManualConfig : IProjectStructureConfig
     {
