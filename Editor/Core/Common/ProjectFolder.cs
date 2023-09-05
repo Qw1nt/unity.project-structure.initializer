@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace ProjectStructure.Initializer.Runtime
+namespace ProjectStructure.Initializer.Runtime.Core
 {
+    [Serializable]
     public class ProjectFolder
     {
         private readonly List<ProjectFolder> _child = new();
@@ -13,7 +15,7 @@ namespace ProjectStructure.Initializer.Runtime
             Root = root;
         }
         
-        public string Name { get; }
+        public string Name { get; set; }
         
         public ProjectFolder Root { get; }
 
