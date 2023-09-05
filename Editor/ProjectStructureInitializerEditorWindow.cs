@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Linq;
-using DG.DOTweenEditor;
-using Mono.Cecil;
 using ProjectStructure.Initializer.Editor.Core.Common;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
-using Directory = UnityEngine.Windows.Directory;
 
 namespace ProjectStructure.Initializer.Editor
 {

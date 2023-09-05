@@ -1,7 +1,5 @@
 ﻿using ProjectStructure.Initializer.Editor.Core.Common;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
-using UnityEditor;
-using UnityEditorInternal;
 
 namespace ProjectStructure.Initializer.Editor.Configs
 {
