@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TemplateBuilder.Runtime
+namespace ProjectStructure.Initializer.Runtime
 {
     public class ProjectFolder
     {

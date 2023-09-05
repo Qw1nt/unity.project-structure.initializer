@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TemplateBuilder.Runtime
+namespace ProjectStructure.Initializer.Runtime
 {
     public interface IProjectStructureConfig
     {
