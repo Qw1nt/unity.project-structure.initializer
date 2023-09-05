@@ -4,6 +4,6 @@ namespace ProjectStructure.Initializer.Editor.Core.Interfaces
 {
     public interface IProjectStructureConfig
     {
-        void Build(ProjectBuilder builder);
+        void Setup(ProjectBuilder builder);
     }
 }
