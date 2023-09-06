@@ -1,47 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
+using UnityEngine;
 
 namespace ProjectStructure.Initializer.Editor.Core.Common
 {
     public class ProjectBuilder
     {
-        private readonly List<ProjectFolder> _structure = new();
+        private readonly Dictionary<string, Folder> _structure = new();
 
         public ProjectBuilder(IProjectStructureConfig config)
         {
             config.Setup(this);
         }
         
-        public ProjectBuilder AddRootFolder(string name, Action<ProjectFolder> initialize = null)
+        public ProjectBuilder AddRootFolder(string name, Action<Folder> initialize = null)
         {
-            var folder = new ProjectFolder(name);
+            var folder = new Folder(name);
             
-            _structure.Add(folder);
+            _structure.Add(folder.Name, folder);
             initialize?.Invoke(folder);
             
             return this;
         }
 
+        public ProjectBuilder ExcludeFolder(string name)
+        {
+            if (_structure.ContainsKey(name) == true)
+                _structure.Remove(name);
+
+            return this;
+        }
+
         public void Build()
         {
-            CreateRootFolders();
+            foreach (var folder in _structure)
+                CreateRootFolder(folder.Value);
+
             AssetDatabase.Refresh();
         }
 
-        private void CreateRootFolders()
+        private void CreateRootFolder(Folder root)
         {
-            foreach (var folder in _structure)
+            var rootFolderPath = $"Assets/{root.Name}";
+            SafeDirectoryCreate(rootFolderPath);
+
+            var subFolders = root.SubFolders;
+            foreach (var folder in subFolders)
             {
-                var path = $"Assets/{folder.Name}";
+                var basePath = $"{rootFolderPath}/{folder.Name}";
+                SafeDirectoryCreate(basePath);
                 
-                if(Directory.Exists(path) == true)
-                    continue;
-                
-                Directory.CreateDirectory(path);
+                while (folder.SubFolders.Count > 0)
+                {
+                    if(folder.SubFolders.TryDequeue(out var target) == false)
+                        break;
+
+                    var createPath = $"{basePath}/{target.Name}";
+                    SafeDirectoryCreate(createPath);
+                }   
             }
+        }
+
+        private void SafeDirectoryCreate(string path)
+        {
+            if (Directory.Exists(path) == false)
+                Directory.CreateDirectory(path);
         }
     }
 }
