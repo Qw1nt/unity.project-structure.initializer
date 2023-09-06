@@ -47,6 +47,17 @@ namespace ProjectStructure.Initializer.Editor
             if (_configIndex != selectedIndex)
                 UpdateSelectedConfig(selectedIndex);
 
+            DrawConfigStructure();
+            if (GUILayout.Button("Инициализировать") == false)
+                return;
+
+            _builder.Build();
+            // builder.CreateTree(structure);
+            // structure.LogHierarchy("Создана следующая структура:");
+        }
+
+        private void DrawConfigStructure()
+        {
             foreach (var folder in _viewHierarchy)
             {
                 GUILayout.BeginHorizontal();
@@ -65,14 +76,6 @@ namespace ProjectStructure.Initializer.Editor
                 EditorGUILayout.LabelField($"{string.Concat(Enumerable.Repeat("- ", folder.Depth))}{folder.Name}");
                 GUILayout.EndHorizontal();
             }
-
-            if (GUILayout.Button("Инициализировать") == false)
-                return;
-
-            var structure = new Queue<Folder>();
-
-            // builder.CreateTree(structure);
-            // structure.LogHierarchy("Создана следующая структура:");
         }
 
         private ProjectBuilder CreateBuilder()
