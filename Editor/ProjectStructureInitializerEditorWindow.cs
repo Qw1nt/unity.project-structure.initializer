@@ -52,8 +52,6 @@ namespace ProjectStructure.Initializer.Editor
                 return;
 
             _builder.Build();
-            // builder.CreateTree(structure);
-            // structure.LogHierarchy("Создана следующая структура:");
         }
 
         private void DrawConfigStructure()

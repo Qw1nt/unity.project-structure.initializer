@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 
 namespace ProjectStructure.Initializer.Editor.Core.Common
