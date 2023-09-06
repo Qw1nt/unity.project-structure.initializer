@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ProjectStructure.Initializer.Editor.Core.Common
 {
@@ -41,6 +42,22 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             SubFolders.Enqueue(instance);
             onCreate?.Invoke(instance);
             return this;
+        }
+
+        public string GetFullPath(StringBuilder builder)
+        {
+            builder.Clear();
+            builder.Append("Assets");
+            var root = Root;
+
+            while (root != null)
+            {
+                builder.Append($"/{root.Name}");
+                root = root.Root;
+            }
+            
+            builder.Append($"/{Name}");
+            return builder.ToString();
         }
     }
 }
