@@ -11,7 +11,9 @@ namespace ProjectStructure.Initializer.Editor.Configs
                 .AddRootFolder("3rdParty")
                 .AddRootFolder("Art", projectFolder => projectFolder
                     .AddSubfolder("Animation", subFolder => subFolder
-                        .AddSubfolder("AnimationClips")
+                        .AddSubfolder("AnimationClips", clips => clips
+                            .AddSubfolder("Jojo", jojo => jojo
+                                .AddSubfolder("asd")))
                         .AddSubfolder("Animators"))
                     .AddSubfolder("Audio", subFolder => subFolder
                         .AddSubfolder("AudioClips")

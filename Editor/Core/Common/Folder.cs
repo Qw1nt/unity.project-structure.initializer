@@ -7,20 +7,21 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     public class Folder
     {
         private readonly List<string> _files = new();
-
+        
         public Folder(string name, Folder root = null)
         {
             Name = name;
             Root = root;
+            Depth = Root != null ? Root.Depth + 1 : 0;
         }
         
         public string Name { get; set; }
 
         public Folder Root { get; }
+        
+        public int Depth { get; }
 
         public Queue<Folder> SubFolders { get; } = new();
-
-        public IReadOnlyList<string> Files => _files;
 
         public Folder AddFile(string name)
         {

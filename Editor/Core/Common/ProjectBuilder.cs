@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using NUnit.Framework;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
 using UnityEngine;
@@ -11,57 +13,70 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     public class ProjectBuilder
     {
         private readonly Dictionary<string, Folder> _structure = new();
+        private readonly BuilderMask _mask = new();
 
         public ProjectBuilder(IProjectStructureConfig config)
         {
             config.Setup(this);
         }
-        
+
+        internal IBuilderMask Mask => _mask;
+
         public ProjectBuilder AddRootFolder(string name, Action<Folder> initialize = null)
         {
             var folder = new Folder(name);
-            
+
             _structure.Add(folder.Name, folder);
             initialize?.Invoke(folder);
+
+            return this;
+        }
+
+        public ProjectBuilder ExcludeFolder(Folder folder)
+        {
+            _mask.Exclude(folder);
+            return this;
+        }
+
+        public ProjectBuilder IncludeFolder(Folder folder)
+        {
+            _mask.Include(folder);
+            return this;
+        }
+
+        internal void Build()
+        {
+            _mask.Apply(_structure);
             
-            return this;
-        }
-
-        public ProjectBuilder ExcludeFolder(string name)
-        {
-            if (_structure.ContainsKey(name) == true)
-                _structure.Remove(name);
-
-            return this;
-        }
-
-        public void Build()
-        {
-            foreach (var folder in _structure)
-                CreateRootFolder(folder.Value);
-
+            var structure = new Queue<Folder>();
+            CreateTree(structure);
+            
             AssetDatabase.Refresh();
         }
 
-        private void CreateRootFolder(Folder root)
+        internal void CreateTree(Queue<Folder> result)
+        {
+            result.Clear();
+            foreach (var folder in _structure)
+                CreateRootFolder(folder.Value, result);
+        }
+
+        private void CreateRootFolder(Folder root, Queue<Folder> collection = null)
         {
             var rootFolderPath = $"Assets/{root.Name}";
             SafeDirectoryCreate(rootFolderPath);
 
-            var subFolders = root.SubFolders;
-            foreach (var folder in subFolders)
-            {
-                var basePath = $"{rootFolderPath}/{folder.Name}";
-                SafeDirectoryCreate(basePath);
-                
-                while (folder.SubFolders.Count > 0)
-                {
-                    if(folder.SubFolders.TryDequeue(out var target) == false)
-                        break;
+            var structure = collection ?? new Queue<Folder>();
+            var target = root;
+            structure.Enqueue(target);
 
-                    var createPath = $"{basePath}/{target.Name}";
-                    SafeDirectoryCreate(createPath);
-                }   
+            while (target.SubFolders.TryDequeue(out var child))
+            {
+                target = child;
+                structure.Enqueue(target);
+
+                while (target.SubFolders.Count == 0 && target.Root != null)
+                    target = target.Root;
             }
         }
 
