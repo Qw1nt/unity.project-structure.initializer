@@ -14,6 +14,7 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     {
         private readonly Dictionary<string, Folder> _structure = new();
         private readonly BuilderMask _mask = new();
+        private readonly StringBuilder _stringBuilder = new(16);
 
         public ProjectBuilder(IProjectStructureConfig config)
         {
@@ -74,6 +75,7 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             {
                 target = child;
                 structure.Enqueue(target);
+                SafeDirectoryCreate(target.GetFullPath(_stringBuilder));
 
                 while (target.SubFolders.Count == 0 && target.Root != null)
                     target = target.Root;
