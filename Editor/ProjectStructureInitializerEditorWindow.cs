@@ -52,6 +52,7 @@ namespace ProjectStructure.Initializer.Editor
                 return;
 
             _builder.Build();
+            UpdateSelectedConfig(_configIndex);
         }
 
         private void DrawConfigStructure()
