@@ -17,7 +17,7 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor
         private ProjectBuilder _builder;
         private int _configIndex;
 
-        [MenuItem("Tools/SnailBee/ProjectStructure/Initializer")]
+        [MenuItem("Tools/Qw1nt/ProjectStructure/Initializer")]
         private static void Open()
         {
             var window = CreateInstance<ProjectStructureInitializerEditorWindow>();
