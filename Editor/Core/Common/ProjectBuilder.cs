@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
+using UnityEngine;
 
 namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 {
@@ -21,7 +22,7 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 
         internal IBuilderMask Mask => _mask;
 
-        public ProjectBuilder AddRootFolder(string name, Action<Folder> initialize = null)
+        public ProjectBuilder AddFolder(string name, Action<Folder> initialize = null)
         {
             var folder = new Folder(name);
 

@@ -19,4 +19,31 @@
 
 ![App Screenshot](https://github.com/Qw1nt/unity.project-structure.initializer/blob/screenshots/Screenshots/3.png?raw=true)
 
-## Создание 
+## Создание собственной конфигурации
+ 
+Для этого необходимо унаследовать класс от ```IProjectStructureConfig```
+
+```csharp
+public class CustomConfig : IProjectStructureConfig
+{
+    public void Setup(ProjectBuilder builder)
+    {
+        // Добавление папки с названием "MyFolder"
+        builder.AddFolder("MyFolder");
+
+        // | MyFolder2
+        // | - SimpleSubfolder
+        builder.AddFolder("MyFolder2", folder => folder.AddSubfolder("SimpleSubfolder"));
+        
+        // | Fluent
+        // | - FluentSub
+        // | - - FluentSubSub
+        // | NewRoot
+        builder
+            .AddFolder("Fluent", fluent => fluent
+                .AddSubfolder("FluentSub", fluentSub => fluentSub
+                    .AddSubfolder("FluentSubSub")))
+            .AddFolder("NewRoot");
+    }
+}
+```

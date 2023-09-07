@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces;
+using UnityEngine;
 
 namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 {
