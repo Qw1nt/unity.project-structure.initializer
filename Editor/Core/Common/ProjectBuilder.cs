@@ -45,6 +45,7 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 
         internal void Parse(Queue<Folder> result)
         {
+            result.Clear();
             _parser.Execute(_structure, result);
         }
 
