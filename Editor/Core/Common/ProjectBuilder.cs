@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ProjectStructure.Initializer.Editor.Core.Interfaces;
+using Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
-using UnityEngine;
 
-namespace ProjectStructure.Initializer.Editor.Core.Common
+namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 {
     public class ProjectBuilder
     {
@@ -56,7 +55,7 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             parsedTree = _mask.Apply(parsedTree);
 
             foreach (var folder in parsedTree)
-                SafeDirectoryCreate(folder); 
+                SafeDirectoryCreate(folder);
 
             AssetDatabase.Refresh();
         }

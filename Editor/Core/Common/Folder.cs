@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProjectStructure.Initializer.Editor.Core.Common
+namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 {
     [Serializable]
     public class Folder

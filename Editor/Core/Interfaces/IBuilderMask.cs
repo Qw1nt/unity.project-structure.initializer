@@ -1,6 +1,6 @@
-﻿using ProjectStructure.Initializer.Editor.Core.Common;
+﻿using Qw1nt.ProjectStructure.Initializer.Editor.Core.Common;
 
-namespace ProjectStructure.Initializer.Editor.Core.Interfaces
+namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces
 {
     internal interface IBuilderMask
     {

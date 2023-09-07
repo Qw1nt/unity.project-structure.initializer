@@ -1,7 +1,7 @@
-﻿using ProjectStructure.Initializer.Editor.Core.Common;
-using ProjectStructure.Initializer.Editor.Core.Interfaces;
+﻿using Qw1nt.ProjectStructure.Initializer.Editor.Core.Common;
+using Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces;
 
-namespace ProjectStructure.Initializer.Editor.Configs
+namespace Qw1nt.ProjectStructure.Initializer.Editor.Configs
 {
     public class DefaultManualConfig : IProjectStructureConfig
     {

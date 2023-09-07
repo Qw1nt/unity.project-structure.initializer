@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ProjectStructure.Initializer.Editor.Core.Common;
-using ProjectStructure.Initializer.Editor.Core.Extensions;
-using ProjectStructure.Initializer.Editor.Core.Interfaces;
+using Qw1nt.ProjectStructure.Initializer.Editor.Core.Common;
+using Qw1nt.ProjectStructure.Initializer.Editor.Core.Interfaces;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProjectStructure.Initializer.Editor
+namespace Qw1nt.ProjectStructure.Initializer.Editor
 {
     internal class ProjectStructureInitializerEditorWindow : EditorWindow
     {
