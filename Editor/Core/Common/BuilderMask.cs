@@ -8,11 +8,11 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     {
         private readonly HashSet<string> _excludes = new();
 
-        internal Queue<Folder> Apply(Queue<Folder> parsedHierarchy)
+        internal Queue<Folder> Apply(IEnumerable<Folder> parsedHierarchy)
         {
-            return new Queue<Folder>(parsedHierarchy.Where(x => _excludes.Contains(x.FullPath) == false));
+            return new Queue<Folder>(parsedHierarchy.Where(x => _excludes.Any(path => path == x.FullPath) == false));
         }
-        
+
         internal void Include(Folder folder)
         {
             if (_excludes.Contains(folder.FullPath) == true)
