@@ -50,6 +50,7 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor
                 return;
 
             _builder.Build();
+            EditorUtility.DisplayDialog("Информация", "Структура успешно инициализирована", "Ок");
             UpdateSelectedConfig(_configIndex);
         }
 
