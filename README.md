@@ -11,7 +11,7 @@
 
 #### 2) Выбрать нужную конфигурацию
 
-> Для исключение ненужной нужно снять с неё выделение
+> Если какая-то часть в конфигурации не нужна, то её можно отключить снятием галочки
 
 ![App Screenshot](https://github.com/Qw1nt/unity.project-structure.initializer/blob/screenshots/Screenshots/2.png?raw=true)
 
