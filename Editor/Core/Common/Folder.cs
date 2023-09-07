@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectStructure.Initializer.Editor.Core.Common
 {
@@ -14,6 +13,7 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             Name = name;
             Root = root;
             Depth = Root != null ? Root.Depth + 1 : 0;
+            FullPath = Root != null ? Root.FullPath + $"/{Name}" : $"Assets/{Name}";
         }
         
         public string Name { get; set; }
@@ -21,6 +21,8 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
         public Folder Root { get; }
         
         public int Depth { get; }
+        
+        public string FullPath { get; }
 
         public Queue<Folder> SubFolders { get; } = new();
 
@@ -44,20 +46,26 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             return this;
         }
 
-        public string GetFullPath(StringBuilder builder)
+        /*public string GetFullPath(StringBuilder builder)
         {
+            var words = new Stack<string>(10);
             builder.Clear();
-            builder.Append("Assets");
             var root = Root;
+            words.Push($"{Name}/");
 
             while (root != null)
             {
-                builder.Append($"/{root.Name}");
+                words.Push($"{root.Name}/");
                 root = root.Root;
             }
             
-            builder.Append($"/{Name}");
+            words.Push("Assets/");
+
+            foreach (var word in words)
+                builder.Append(word);
+            
+            // builder.Append($"/{Name}");
             return builder.ToString();
-        }
+        }*/
     }
 }
