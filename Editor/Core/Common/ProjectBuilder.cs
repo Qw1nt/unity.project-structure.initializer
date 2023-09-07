@@ -48,15 +48,16 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
         {
             _parser.Execute(_structure, result);
         }
-        
+
         internal void Build()
         {
             var parsedTree = new Queue<Folder>();
             _parser.Execute(_structure, parsedTree);
-            
+            parsedTree = _mask.Apply(parsedTree);
+
             foreach (var folder in parsedTree)
                 SafeDirectoryCreate(folder); 
-            
+
             AssetDatabase.Refresh();
         }
 

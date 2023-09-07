@@ -8,10 +8,9 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     {
         private readonly HashSet<string> _excludes = new();
 
-        internal void Apply(IHierarchyParser parser, IEnumerable<Folder> structure, Queue<Folder> result)
+        internal Queue<Folder> Apply(Queue<Folder> parsedHierarchy)
         {
-            parser.Execute(structure, result);
-            result = new Queue<Folder>(result.Where(x => _excludes.Contains(x.FullPath) == false));
+            return new Queue<Folder>(parsedHierarchy.Where(x => _excludes.Contains(x.FullPath) == false));
         }
         
         internal void Include(Folder folder)
