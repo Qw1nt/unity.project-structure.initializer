@@ -1,7 +1,7 @@
 {
-  "name": "com.qw1nt.template-builder",
+  "name": "com.qw1nt.projectstructure.initializer",
   "version": "0.0.1",
-  "displayName": "Project Template Builder",
+  "displayName": "Project Structure Initializer",
   "unity": "2019.1",
   "unityRelease": "0b5",
   "author": {
