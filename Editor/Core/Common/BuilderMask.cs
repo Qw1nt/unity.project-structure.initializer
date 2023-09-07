@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ProjectStructure.Initializer.Editor.Core.Interfaces;
 
 namespace ProjectStructure.Initializer.Editor.Core.Common
@@ -7,25 +8,26 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
     {
         private readonly HashSet<string> _excludes = new();
 
-        public void Apply(Dictionary<string, Folder> structure)
+        internal void Apply(IHierarchyParser parser, IEnumerable<Folder> structure, Queue<Folder> result)
         {
-            
-        }
-
-        public void Include(Folder folder)
-        {
-            if (_excludes.Contains(folder.Name) == true)
-                _excludes.Remove(folder.Name);
+            parser.Execute(structure, result);
+            result = new Queue<Folder>(result.Where(x => _excludes.Contains(x.FullPath) == false));
         }
         
-        public void Exclude(Folder folder)
+        internal void Include(Folder folder)
         {
-            _excludes.Add(folder.Name);
+            if (_excludes.Contains(folder.FullPath) == true)
+                _excludes.Remove(folder.FullPath);
+        }
+
+        internal void Exclude(Folder folder)
+        {
+            _excludes.Add(folder.FullPath);
         }
 
         public bool IsExclude(Folder folder)
         {
-            return _excludes.Contains(folder.Name);
+            return _excludes.Contains(folder.FullPath);
         }
     }
 }

@@ -45,27 +45,5 @@ namespace ProjectStructure.Initializer.Editor.Core.Common
             onCreate?.Invoke(instance);
             return this;
         }
-
-        /*public string GetFullPath(StringBuilder builder)
-        {
-            var words = new Stack<string>(10);
-            builder.Clear();
-            var root = Root;
-            words.Push($"{Name}/");
-
-            while (root != null)
-            {
-                words.Push($"{root.Name}/");
-                root = root.Root;
-            }
-            
-            words.Push("Assets/");
-
-            foreach (var word in words)
-                builder.Append(word);
-            
-            // builder.Append($"/{Name}");
-            return builder.ToString();
-        }*/
     }
 }

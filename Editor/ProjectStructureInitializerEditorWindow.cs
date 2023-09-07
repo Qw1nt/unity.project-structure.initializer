@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace ProjectStructure.Initializer.Editor
 {
-    public class ProjectStructureInitializerEditorWindow : EditorWindow
+    internal class ProjectStructureInitializerEditorWindow : EditorWindow
     {
         private readonly TypeCache.TypeCollection _configsAssembliesNames;
         private readonly string[] _configsDisplayNames;
@@ -79,14 +79,14 @@ namespace ProjectStructure.Initializer.Editor
         private ProjectBuilder CreateBuilder()
         {
             var configInstance = Activator.CreateInstance(_configsAssembliesNames[_configIndex]);
-            _builder = new ProjectBuilder((IProjectStructureConfig) configInstance);
+            _builder = new ProjectBuilder((IProjectStructureConfig) configInstance, new HierarchyParser());
             return _builder;
         }
 
         private void UpdateSelectedConfig(int index)
         {
             _configIndex = index;
-            CreateBuilder().CreateTree(_viewHierarchy);
+            CreateBuilder().Parse(_viewHierarchy);
         }
     }
 }
