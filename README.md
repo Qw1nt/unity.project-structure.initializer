@@ -11,7 +11,7 @@
 
 #### 2) Выбрать нужную конфигурацию
 
-> Если какая-то часть в конфигурации не нужна, то её можно отключить снятием галочки
+> Если вы не хотите создавать часть папок в конфигурации, то снимите галочку напротив не нужного пункта
 
 ![App Screenshot](https://github.com/Qw1nt/unity.project-structure.initializer/blob/screenshots/Screenshots/2.png?raw=true)
 
