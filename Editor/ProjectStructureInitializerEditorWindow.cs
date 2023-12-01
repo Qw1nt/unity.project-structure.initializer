@@ -49,7 +49,7 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor
             if (GUILayout.Button("Инициализировать") == false)
                 return;
 
-            CreateBuilder().Build();
+            _builder.Build();
             EditorUtility.DisplayDialog("Информация", "Структура успешно инициализирована", "Ок");
             UpdateSelectedConfig(_configIndex);
         }

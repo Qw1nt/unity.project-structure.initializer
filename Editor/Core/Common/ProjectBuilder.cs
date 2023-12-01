@@ -54,8 +54,9 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
         {
             var parsedTree = new Queue<Folder>();
             _parser.Execute(_structure, parsedTree);
-            parsedTree = _mask.Apply(parsedTree);
 
+            parsedTree = _mask.Apply(parsedTree);
+            
             foreach (var folder in parsedTree)
                 SafeDirectoryCreate(folder);
 
@@ -64,6 +65,17 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 
         private void SafeDirectoryCreate(Folder folder)
         {
+            Folder root = null;
+            root = folder;
+            
+            while (root != null)
+            {
+                if(_mask.IsExclude(root) == true)
+                    return;
+
+                root = root.Root;
+            }
+            
             if (Directory.Exists(folder.FullPath) == false)
                 Directory.CreateDirectory(folder.FullPath);
         }

@@ -10,7 +10,8 @@ namespace Qw1nt.ProjectStructure.Initializer.Editor.Core.Common
 
         internal Queue<Folder> Apply(IEnumerable<Folder> parsedHierarchy)
         {
-            return new Queue<Folder>(parsedHierarchy.Where(x => _excludes.Any(path => path == x.FullPath) == false));
+            var result =  new Queue<Folder>(parsedHierarchy.Where(x => _excludes.Any(path => path == x.FullPath) == false));
+            return result;
         }
 
         internal void Include(Folder folder)
